@@ -4,9 +4,9 @@ pipeline {
   stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t newimage:latest .' 
-                  sh 'docker tag newimage alexgoffo200/pipeline:latest'
-                sh 'docker tag newimage alexgoffo200/pipeline:$BUILD_NUMBER'
+                sh 'docker build pipeline:latest .' 
+                  sh 'docker tag pipeline alexgoffo200/pipeline:latest'
+                sh 'docker tag pipeline alexgoffo200/pipeline:$BUILD_NUMBER'
                
           }
         }
