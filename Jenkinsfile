@@ -16,7 +16,7 @@ pipeline {
             steps {
         withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "https://registry.hub.docker.com" ]) {
           sh  'docker push alexgoffo200/pipeline:latest'
-          sh  'docker push alexgoffo200/pipeline:$BUILD_NUMBER' 
+          sh  'docker push coursework2/newimage:$BUILD_NUMBER' 
         }
                   
           }
