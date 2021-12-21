@@ -5,8 +5,8 @@ pipeline {
            steps {
               
                 sh 'docker build -t newimage:latest .' 
-                  sh 'docker tag newimage coursework2/newimage:latest'
-                sh 'docker tag newimage coursework2/newimage:$BUILD_NUMBER'
+                  sh 'docker tag newimage alexgoffo200/pipeline:latest'
+                sh 'docker tag newimage alexgoffo200/pipeline:$BUILD_NUMBER'
                
           }
         }
@@ -16,7 +16,7 @@ pipeline {
             steps {
         withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "https://registry.hub.docker.com" ]) {
           sh  'docker push alexgoffo200/pipeline:latest'
-          sh  'docker push coursework2/newimage:$BUILD_NUMBER' 
+          sh  'docker push alexgoffo200/pipeline:$BUILD_NUMBER' 
         }
                   
           }
@@ -25,14 +25,14 @@ pipeline {
       stage('Run Docker container on Jenkins Agent') {
              
             steps {
-                sh "docker run -d -p 4030:80 coursework2/newimage"
+                sh "docker run -d -p 4030:80 alexgoffo200/pipeline"
  
             }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://jenkins@172.31.28.25 run -d -p 4001:80 coursework2/newimage"
+                sh "docker -H ssh://jenkins@172.31.28.25 run -d -p 4001:80 alexgoffo200/pipeline"
  
             }
         }
