@@ -24,9 +24,7 @@ pipeline {
     steps{
         sshagent(credentials : ['private-key']) {
           sh '''
-                [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
-                ssh-keyscan -t rsa,dsa example.com >> ~/.ssh/known_hosts
-                ssh user@example.com ...
+               ssh ubuntu@3.84.108.226 pwd
             '''
         }
     }
