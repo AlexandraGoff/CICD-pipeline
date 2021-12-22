@@ -23,7 +23,9 @@ pipeline {
     stage ('Deploy') {
     steps{
         sshagent(credentials : ['private-key']) {
+         sh '''
          ssh ubuntu@3.84.108.226 'pwd'
+         '''
         }
     }
    
