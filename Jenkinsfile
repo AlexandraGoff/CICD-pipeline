@@ -20,6 +20,14 @@ pipeline {
                   
             }
   }
+     
+   stage('Run Docker container test') {
+             
+            steps {
+                sh "docker run -d -p 4030:80 alexgoffo200/pipeline"
+ 
+            }
+        }
  
     }
 }
