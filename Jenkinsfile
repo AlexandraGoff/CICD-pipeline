@@ -23,7 +23,7 @@ pipeline {
     stage ('Deploy') {
     steps{
         sshagent(credentials : ['private-key']) {
-            sh 'touch test.txt'
+            sh 'ansible-playbook ansible-deployment.yml -vvvv'
         }
     }
    
