@@ -23,8 +23,9 @@ pipeline {
     stage ('Deploy') {
     steps{
         sshagent(credentials : ['private-key']) {
-          sh 'docker pull alexgoffo200/pipeline:latest'
-          sh 'kubectl create deployment coursework2-deployment --image=alexgoffo200/pipeline'
+          sh '''
+                ssh ansible-playbook ansible-deployment.yml
+            '''
         }
     }
    
