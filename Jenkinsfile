@@ -21,22 +21,13 @@ pipeline {
                   
           }
         }
-     
-      stage('Run Docker container on Jenkins Agent') {
-             
-            steps {
-                sh "docker run -d -p 4030:80 alexgoffo200/pipeline"
- 
-            }
-        }
 
        stage('Run Deployment Playbook') {
-
-            steps {
-            sh 'kubectl apply -f deployment.yaml'
-
-            }
-        }
+    withKubeConfig([credentialsId: 'kubernetes-config']) {
+        sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
+        sh 'chmod u+x ./kubectl'  
+        sh './kubectl get pods'
+    }
 
 
     }
