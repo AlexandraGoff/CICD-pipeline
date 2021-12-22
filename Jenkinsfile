@@ -29,5 +29,14 @@ pipeline {
  
             }
         }
+
+       stage('Deploy image deployment file to kubernetes.') {
+
+            steps {
+                sh "kubectl apply -f node-deployment.yaml"
+
+            }
+        }
+
     }
 }
