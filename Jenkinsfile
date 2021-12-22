@@ -33,9 +33,7 @@ pipeline {
        stage('Run Deployment Playbook') {
 
             steps {
-               ansiblePlaybook(
-                      playbook: 'ansible-deployment.yml'   
-            )
+            sh 'kubectl apply -f deployment.yaml'
 
             }
         }
