@@ -22,9 +22,9 @@ pipeline {
   }
     stage ('Deploy') {
     steps{
-        sshagent(credentials : ['private-key']) {
-            sh "ansible-playbook ansible-deployment.yml"
-        }
+         sh '''
+                ansible-playbook ansible-deployment.yml
+            '''
     }
    
   }   
