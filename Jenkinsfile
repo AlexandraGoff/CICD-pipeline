@@ -12,14 +12,14 @@ pipeline {
         }
      
   stage('Publish image to Docker Hub') {
-          
-            steps {
+  steps {
         withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "https://index.docker.io/v1/" ]) {
           sh  'docker push alexgoffo200/pipeline:latest'
           sh  'docker push alexgoffo200/pipeline:$BUILD_NUMBER' 
             }
                   
             }
+  }
     stage ('Deploy') {
     steps{
         sshagent(credentials : ['private-key']) {
@@ -32,4 +32,4 @@ pipeline {
   }   
     }
 }
-}
+
