@@ -24,7 +24,7 @@ pipeline {
     steps{
         sshagent(credentials : ['private-key']) {
          sh '''
-         ssh ubuntu@3.84.108.226 'pwd'
+         ssh ec2-user 'pwd'
          '''
         }
     }
