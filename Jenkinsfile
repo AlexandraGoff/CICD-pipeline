@@ -19,14 +19,7 @@ pipeline {
           sh  'docker push alexgoffo200/pipeline:$BUILD_NUMBER' 
             }
                   
-          }
-        }
-
-       stage('Run Deployment Playbook') {
-    steps{
-    ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'dev.inv', playbook: 'ansible-deployment.yml'
-    }
-}
+            }
    
     }
 }
