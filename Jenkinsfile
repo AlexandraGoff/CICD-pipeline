@@ -33,7 +33,7 @@ pipeline {
        stage('Run Deployment Playbook') {
 
             steps {
-               sh "./ansible-deployment.yml"
+               sh "ansible-playbook /var/jenkins_home/workspace/DockerImage_Test@tmp/ansible-deployment.yml"
 
             }
         }
