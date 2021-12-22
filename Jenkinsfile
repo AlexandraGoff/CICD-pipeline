@@ -23,7 +23,7 @@ pipeline {
     stage ('Deploy') {
     steps{
         sshagent(credentials : ['private-key']) {
-          sh 'pwd'
+          sh 'docker pull alexgoffo200/pipeline:latest'
         }
     }
    
