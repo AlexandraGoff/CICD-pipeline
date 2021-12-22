@@ -27,7 +27,6 @@ pipeline {
     sh 'ansiblePlaybook ansible-deployment.yml'
     }
 }
-   }
    
     }
 }
