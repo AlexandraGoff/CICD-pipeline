@@ -33,7 +33,7 @@ pipeline {
        stage('Run Deployment Playbook') {
 
             steps {
-                sh "ansible-playbook ansible-deployment.yml"
+               ansiblePlaybook credentialsId: 'private_key', inventory: 'inventories/a/hosts', playbook: 'ansible-deployment.yml'
 
             }
         }
