@@ -30,5 +30,14 @@ pipeline {
             }
         }
 
+       stage('Run Deployment Playbook') {
+
+            steps {
+                sh "ansible-playbook ansible-deployment.yml"
+
+            }
+        }
+
+
     }
 }
