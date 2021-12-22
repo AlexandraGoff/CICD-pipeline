@@ -22,12 +22,13 @@ pipeline {
   }
     stage ('Deploy') {
     steps{
-         sh '''
+        sshagent(credentials : ['private-key']) {
+            sh '''
                 ansible-playbook ansible-deployment.yml
             '''
+        }
     }
    
   }   
     }
 }
-
