@@ -5,11 +5,11 @@
   tasks:
   - name: 1. Pull node dockerfile from dockerhub
     shell:
-      cmd: docker pull alexgoffo200/coursework2:latest
+      cmd: docker pull alexgoffo200/pipeline:latest
 
   - name: 2. Create a kubectl deployment with a proxy
     shell:
-      cmd: kubectl create deployment coursework2-deployment --image=alexgoffo200/coursework2
+      cmd: kubectl create deployment coursework2-deployment --image=alexgoffo200/pipeline
 
   - name: 3. Creating a new service for the application
     shell:
