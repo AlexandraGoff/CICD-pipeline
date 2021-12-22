@@ -23,9 +23,7 @@ pipeline {
     stage ('Deploy') {
     steps{
         sshagent(credentials : ['private-key']) {
-            sh '''
-                sudo ansible-playbook ansible-deployment.yml
-            '''
+          ansible-playbook ansible-deployment.yml
         }
     }
    
