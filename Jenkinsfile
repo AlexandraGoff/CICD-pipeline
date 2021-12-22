@@ -23,9 +23,7 @@ pipeline {
     stage ('Deploy') {
     steps{
         sshagent(credentials : ['private-key']) {
-            sh 'ssh -o StrictHostKeyChecking=no user@hostname.com uptime'
-            sh 'ssh -v user@hostname.com'
-            sh 'scp ./source/filename user@hostname.com:/remotehost/target'
+            sh 'touch test.txt'
         }
     }
    
