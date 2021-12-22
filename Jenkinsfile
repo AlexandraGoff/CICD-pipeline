@@ -20,15 +20,6 @@ pipeline {
                   
             }
   }
-    stage ('Deploy') {
-    steps{
-        sshagent(credentials : ['private-key']) {
-         sh '''
-         ssh ec2-user 'pwd'
-         '''
-        }
-    }
-   
-  }   
+ 
     }
 }
