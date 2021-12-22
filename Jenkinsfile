@@ -24,6 +24,7 @@ pipeline {
     steps{
         sshagent(credentials : ['private-key']) {
           sh 'docker pull alexgoffo200/pipeline:latest'
+          sh 'kubectl create deployment coursework2-deployment --image=alexgoffo200/pipeline'
         }
     }
    
