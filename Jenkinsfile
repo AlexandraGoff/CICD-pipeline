@@ -17,7 +17,7 @@ pipeline {
         withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "https://index.docker.io/v1/" ]) {
           sh  'docker push alexgoffo200/pipeline:latest'
           sh  'docker push alexgoffo200/pipeline:$BUILD_NUMBER' 
-        }
+            }
                   
           }
         }
@@ -27,14 +27,6 @@ pipeline {
             steps {
                 sh "docker run -d -p 4030:80 alexgoffo200/pipeline"
  
-            }
-        }
-
-       stage('Deploy image deployment file to kubernetes.') {
-
-            steps {
-                sh "kubectl apply -f node-deployment.yaml"
-
             }
         }
 
